@@ -1,0 +1,6 @@
+venv/
+distribution/
+.idea/
+media/
+__pycache__/
+.env
