@@ -35,6 +35,16 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 # Application definition
 
 INSTALLED_APPS = [
+    'unfold',
+    'unfold.contrib.filters',
+    'unfold.contrib.forms',
+    'unfold.contrib.inlines',
+    'unfold.contrib.import_export',
+    'unfold.contrib.guardian',
+    'unfold.contrib.simple_history',
+    'unfold.contrib.location_field',
+    'unfold.contrib.constance',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -141,3 +151,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Новые настройки
+AUTH_USER_MODEL = 'users.User' #Регистрируем новую модель пользователя для проекта
+
+UNFOLD = {
+    'SITE_TITLE': 'Boutique Administration',
+    'SITE_HEADER': 'Boutique Administration'
+}
