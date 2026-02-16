@@ -1,12 +1,12 @@
 from itertools import product
 
 from django.shortcuts import render
-from .models import Category, Tags, Products, Shop
+from .models import Category, Tags, Product, Shop
 
 # Create your views here.
 def show_home_page(request):
     categories = Category.objects.all()
-    products = Products.objects.all()
+    products = Product.objects.all()
 
     context = {
         'categories': categories,
@@ -17,7 +17,7 @@ def show_home_page(request):
 
 def show_shop_page(request):
     categories = Category.objects.all()
-    products = Products.objects.all()
+    products = Product.objects.all()
     shops = Shop.objects.all()
 
     context = {

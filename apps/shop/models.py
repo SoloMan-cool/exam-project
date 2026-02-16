@@ -36,7 +36,7 @@ class Tags(BaseTimedModel):
         verbose_name = 'Тег'
         verbose_name_plural = 'Теги'
 
-class Products(BaseTimedModel):
+class Product(BaseTimedModel):
     class StatusChoices(models.TextChoices):
         sold = 'sold', 'Sold'
         new = 'new', 'New'
