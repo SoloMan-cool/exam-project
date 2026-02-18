@@ -81,6 +81,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.users.context_processors.wishlist_count',
+                'apps.users.context_processors.base_context',
             ],
         },
     },
@@ -155,6 +157,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Новые настройки
 AUTH_USER_MODEL = 'users.User' #Регистрируем новую модель пользователя для проекта
+LOGIN_URL = 'auth-page'
+LOGIN_REDIRECT_URL = 'home-page'
+LOGOUT_REDIRECT_URL = 'home-page'
 
 UNFOLD = {
     'SITE_TITLE': 'Boutique Administration',

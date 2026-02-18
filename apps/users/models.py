@@ -5,7 +5,6 @@ from apps.common.models import BaseTimedModel
 
 class User(AbstractUser):
     avatar = models.ImageField(upload_to="users/avatars", null=True, blank=True, verbose_name='Фото пользователя')
-    email = models.EmailField(unique=True)
 
 class Wishlist(BaseTimedModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Избранное')

@@ -31,25 +31,12 @@ Authentification page
         <h2 class="h5 text-uppercase mb-4">Sign up</h2>
         <div class="row">
             <div class="col-lg-8">
-                <form action="#">
-                    <div class="row gy-3">
-                        <div class="col-lg-6">
-                            <label class="form-label text-sm text-uppercase" for="firstName">First name </label>
-                            <input class="form-control form-control-lg" type="text" id="firstName" placeholder="Enter your first name">
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="form-label text-sm text-uppercase" for="lastName">Last name </label>
-                            <input class="form-control form-control-lg" type="text" id="lastName" placeholder="Enter your last name">
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="form-label text-sm text-uppercase" for="email">Email address </label>
-                            <input class="form-control form-control-lg" type="email" id="email" placeholder="e.g. Jason@example.com">
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="form-label text-sm text-uppercase" for="phone">Password</label>
-                            <input class="form-control form-control-lg" type="tel" id="phone" placeholder="Enter your password">
-                        </div>
-                    </div>
+                <form method="POST" action="{% url 'register-user' %}">
+
+                    {% csrf_token %}
+
+                    {{ registration_form }}
+
                     <div class="col-lg-12 form-group">
                         <button class="btn btn-dark" type="submit">Sign up</button>
                     </div>
@@ -63,18 +50,10 @@ Authentification page
         <h2 class="h5 text-uppercase mb-4">Log in</h2>
         <div class="row">
             <div class="col-lg-8">
-                <form action="#">
-                    <div class="row gy-3">
-                        <div class="col-lg-6">
-                        <div class="col-lg-6">
-                            <label class="form-label text-sm text-uppercase" for="firstName">First name </label>
-                            <input class="form-control form-control-lg" type="text" id="firstName" placeholder="Enter your first name">
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="form-label text-sm text-uppercase" for="phone">Password</label>
-                            <input class="form-control form-control-lg" type="tel" id="phone" placeholder="Enter your password">
-                        </div>
-                    </div>
+                <form  method="POST" action="{% url 'login-user' %}">
+                    {% csrf_token %}
+
+                    {{ auth_form }}
                     <div class="col-lg-12 form-group">
                         <button class="btn btn-dark" type="submit">Log in</button>
                     </div>
