@@ -55,7 +55,11 @@ Cart page
                         </div>
                       </div>
                     </th>
+                    {% if item.product.status == 'sale' %}
+                    <td class="p-3 align-middle border-light">${{ item.product.discounted_price }}</td>
+                    {% else %}
                     <td class="p-3 align-middle border-light">${{ item.product.price }}</td>
+                    {% endif %}
                     <td class="p-3 align-middle border-light">
                       <form method="POST" action="#">
                         {% csrf_token %}
@@ -66,7 +70,7 @@ Cart page
                         </div>
                       </form>
                     </td>
-                    <td class="p-3 align-middle border-light">${{ item.get_total_price }}</td>
+                    <td class="p-3 align-middle border-light">${{ item.total_price }}</td>
                     <td class="p-3 align-middle border-light">
                       <a class="reset-anchor" href="{% url 'delete-cart-product' item.id %}"><i class="fas fa-trash-alt small text-muted"></i></a>
                     </td>
@@ -109,7 +113,7 @@ Cart page
                   <li class="border-bottom my-2"></li>
                   <li class="d-flex align-items-center justify-content-between mb-4">
                     <strong class="text-uppercase small font-weight-bold">Total</strong>
-                    <span>${{ cart.get_cart_total_price }}</span>
+                    <span>${{ cart.get_cart_total_price_with_discount }}</span>
                   </li>
                 </ul>
               </div>
