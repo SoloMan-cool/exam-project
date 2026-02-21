@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from apps.cart.models import Cart, CartProduct
 from apps.shop.models import Product
 from django.contrib import messages
+from .forms import CheckoutModelForm
 
 @login_required(login_url='auth-page')
 def show_cart_page(request):
@@ -50,3 +51,25 @@ def remove_from_cart(request, cart_product_id):
     cart_product.delete()
     messages.success(request, f'{product.name} удален из корзины')
     return redirect('cart-page')
+
+def show_checkout_page(request):
+    cart = Cart.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = CheckoutModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            CartProduct.objects.filter(cart__user=request.user).delete()
+
+            messages.success(request, 'Ваш заказ успешно оформлен, ожидайте')
+
+            return redirect('home-page')
+    else:
+        form = CheckoutModelForm()
+
+    context = {
+        'cart': cart,
+        'form': form
+    }
+
+    return render(request, 'cart/checkout.html', context)
